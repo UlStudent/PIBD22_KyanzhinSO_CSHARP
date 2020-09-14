@@ -7,19 +7,8 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsSau
 {
-    class Sau
+    public class Sau : basSau
     {
-        private float _startPosX;
-        private float _startPosY;
-        private int _pictureWidth;
-        private int _pictureHeight;
-        private readonly int sauWidth = 70;
-        private readonly int sauHeight = 50;
-
-        public int MaxSpeed { private set; get; }
-        public float Weight { private set; get; }
-
-        public Color MainColor { private set; get; }
         public Color DopColor { private set; get; }
 
         public bool AntiRadar { private set; get; }
@@ -27,7 +16,7 @@ namespace WindowsFormsSau
         public bool Man { private set; get; }
 
         public Sau(int maxSpeed, float weight, Color mainColor, Color dopColor,
-            bool antiradar, bool dopPushka, bool man)
+            bool antiradar, bool dopPushka, bool man) : base(maxSpeed, weight, mainColor, 70, 50)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
@@ -38,47 +27,7 @@ namespace WindowsFormsSau
             Man = man;
         }
 
-        public void SetPosition(int x, int y, int width, int height)
-        {
-            _startPosX = x;
-            _startPosY = y;
-            _pictureWidth = width;
-            _pictureHeight = height;
-        }
-
-        public void MoveTransport(Direction direction)
-        {
-            float step = MaxSpeed * 100 / Weight;
-            switch (direction)
-            {
-                case Direction.Right:
-                    if (_startPosX + step < _pictureWidth - sauWidth)
-                    {
-                        _startPosX += step;
-                    }
-                    break;
-                case Direction.Left:
-                    if (_startPosX - step > 0)
-                    {
-                        _startPosX -= step;
-                    }
-                    break;
-                case Direction.Up:
-                    if (_startPosY - step > 0)
-                    {
-                        _startPosY -= step;
-                    }
-                    break;
-                case Direction.Down:
-                    if (_startPosY + step < _pictureHeight - sauHeight)
-                    {
-                        _startPosY += step;
-                    }
-                    break;
-            }
-        }
-
-        public void DrawTransport(Graphics g)
+        public override void DrawSau(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
             Brush brBlack = new SolidBrush(Color.Black);

@@ -12,7 +12,7 @@ namespace WindowsFormsSau
 {
     public partial class FormSau : Form
     {
-        private Sau sau;
+        private ITransport sau;
 
         public FormSau()
         {
@@ -23,11 +23,21 @@ namespace WindowsFormsSau
         {
             Bitmap bmp = new Bitmap(pictureBoxSau.Width, pictureBoxSau.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            sau.DrawTransport(gr);
+            sau.DrawSau(gr);
             pictureBoxSau.Image = bmp;
         }
 
-        private void buttonCreate_Click(object sender, EventArgs e)
+        private void buttonCreateBasSau_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            sau = new basSau(rnd.Next(100, 300), rnd.Next(1000, 2000),
+           Color.Yellow);
+            sau.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxSau.Width,
+           pictureBoxSau.Height);
+            Draw();
+        }
+
+        private void buttonCreateSau_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             sau = new Sau(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
