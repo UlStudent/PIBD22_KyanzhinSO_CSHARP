@@ -30,12 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSau));
             this.pictureBoxSau = new System.Windows.Forms.PictureBox();
-            this.buttonCreateBasSau = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
-            this.buttonCreateSau = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSau)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,16 +45,6 @@
             this.pictureBoxSau.Size = new System.Drawing.Size(800, 450);
             this.pictureBoxSau.TabIndex = 0;
             this.pictureBoxSau.TabStop = false;
-            // 
-            // buttonCreateBasSau
-            // 
-            this.buttonCreateBasSau.Location = new System.Drawing.Point(28, 402);
-            this.buttonCreateBasSau.Name = "buttonCreateBasSau";
-            this.buttonCreateBasSau.Size = new System.Drawing.Size(98, 23);
-            this.buttonCreateBasSau.TabIndex = 1;
-            this.buttonCreateBasSau.Text = "Create Bas Sau";
-            this.buttonCreateBasSau.UseVisualStyleBackColor = true;
-            this.buttonCreateBasSau.Click += new System.EventHandler(this.buttonCreateBasSau_Click);
             // 
             // buttonUp
             // 
@@ -102,30 +90,18 @@
             this.buttonLeft.UseVisualStyleBackColor = true;
             this.buttonLeft.Click += new System.EventHandler(this.buttonMove_Click);
             // 
-            // buttonCreateSau
-            // 
-            this.buttonCreateSau.Location = new System.Drawing.Point(132, 402);
-            this.buttonCreateSau.Name = "buttonCreateSau";
-            this.buttonCreateSau.Size = new System.Drawing.Size(87, 23);
-            this.buttonCreateSau.TabIndex = 6;
-            this.buttonCreateSau.Text = "Create Sau";
-            this.buttonCreateSau.UseVisualStyleBackColor = true;
-            this.buttonCreateSau.Click += new System.EventHandler(this.buttonCreateSau_Click);
-            // 
             // FormSau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonCreateSau);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonUp);
-            this.Controls.Add(this.buttonCreateBasSau);
             this.Controls.Add(this.pictureBoxSau);
             this.Name = "FormSau";
-            this.Text = "Form1";
+            this.Text = "FormSau";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSau)).EndInit();
             this.ResumeLayout(false);
 
@@ -134,11 +110,9 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxSau;
-        private System.Windows.Forms.Button buttonCreateBasSau;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonLeft;
-        private System.Windows.Forms.Button buttonCreateSau;
     }
 }

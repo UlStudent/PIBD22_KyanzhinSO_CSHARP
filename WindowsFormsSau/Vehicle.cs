@@ -25,7 +25,7 @@ namespace WindowsFormsSau
             _pictureHeight = height;
         }
 
-        public abstract void DrawSau(Graphics g);
+        public abstract void DrawTransport(Graphics g);
         public abstract void MoveTransport(Direction direction);
     } 
 }

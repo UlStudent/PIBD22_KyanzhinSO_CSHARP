@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsSau
 {
-	interface ITransport
+	public interface ITransport
 	{
 		void SetPosition(int x, int y, int width, int height);
 		void MoveTransport(Direction direction);
-		void DrawSau(Graphics g);
+		void DrawTransport(Graphics g);
 	}
 }

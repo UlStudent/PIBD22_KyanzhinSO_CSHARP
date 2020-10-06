@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsSau
 {
-	public class basSau : Vehicle
+	public class ArmorVehicle : Vehicle
 	{
 		protected readonly int sauWidth = 70;
 		protected readonly int sauHeight = 50;
 
-		public basSau(int maxSpeed, float weight, Color mainColor)
+		public ArmorVehicle(int maxSpeed, float weight, Color mainColor)
 		{
 			MaxSpeed = maxSpeed;
 			Weight = weight;
 			MainColor = mainColor;
 		}
 
-		protected basSau(int maxSpeed, float weight, Color mainColor, int sauWidth, int sauHeight)
+		protected ArmorVehicle(int maxSpeed, float weight, Color mainColor, int sauWidth, int sauHeight)
 		{
 			MaxSpeed = maxSpeed;
 			Weight = weight;
@@ -64,7 +64,7 @@ namespace WindowsFormsSau
 			}
 		}
 
-		public override void DrawSau(Graphics g)
+		public override void DrawTransport(Graphics g)
 		{
 			Pen pen = new Pen(Color.Black);
 			Brush brBlack = new SolidBrush(Color.Black);
@@ -74,9 +74,9 @@ namespace WindowsFormsSau
 			g.FillEllipse(brBlack, _startPosX + 38, _startPosY + sauHeight - 15, 20, 15);
 			g.DrawRectangle(pen, _startPosX + 9, _startPosY + sauHeight - 15, 40, 15);
 
-			Brush brOrange = new SolidBrush(Color.Orange);
+			Brush brMainColor = new SolidBrush(MainColor);
 			//bashnya
-			g.FillRectangle(brOrange, _startPosX + 10, _startPosY + sauHeight - 30, 30, 15);
+			g.FillRectangle(brMainColor, _startPosX + 10, _startPosY + sauHeight - 30, 30, 15);
 			//dulo
 			g.FillRectangle(brBlack, _startPosX + 40, _startPosY + sauHeight - 24, 30, 2);
 		}
