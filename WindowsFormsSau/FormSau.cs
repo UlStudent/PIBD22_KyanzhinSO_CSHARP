@@ -23,7 +23,7 @@ namespace WindowsFormsSau
         {
             this.sau = sau;
             Draw();
-        }
+        }
 
         private void Draw()
         {

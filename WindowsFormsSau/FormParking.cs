@@ -12,48 +12,79 @@ namespace WindowsFormsSau
 {
     public partial class FormParking : Form
     {
-        private readonly Parking<ArmorVehicle> parking;
+        private readonly ParkingCollection parkingCollection;
 
         public FormParking()
         {
             InitializeComponent();
-            parking = new Parking<ArmorVehicle>(pictureBoxParking.Width, pictureBoxParking.Height);
-            Draw();        }
+            parkingCollection = new ParkingCollection(pictureBoxParking.Width, pictureBoxParking.Height);
+            Draw();
+        }
+
+        private void ReloadLevels()
+        {
+            int index = listBoxParkings.SelectedIndex;
+            listBoxParkings.Items.Clear();
+            for (int i = 0; i < parkingCollection.Keys.Count; i++)
+            {
+                listBoxParkings.Items.Add(parkingCollection.Keys[i]);
+            }
+            if (listBoxParkings.Items.Count > 0 && (index == -1 || index >= listBoxParkings.Items.Count))
+            {
+                listBoxParkings.SelectedIndex = 0;
+            }
+            else if (listBoxParkings.Items.Count > 0 && index > -1 && index < listBoxParkings.Items.Count)
+            {
+                listBoxParkings.SelectedIndex = index;
+            }
+        }
 
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            parking.Draw(gr);
-            pictureBoxParking.Image = bmp;
-        }
-        private void buttonSetArmorVehicle_Click(object sender, EventArgs e)
-        {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxParkings.SelectedIndex > -1)
             {
-                var armorVehicle = new ArmorVehicle(100, 1000, dialog.Color);
+                Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                parkingCollection[listBoxParkings.SelectedItem.ToString()].Draw(gr);
+                pictureBoxParking.Image = bmp;
+            }
+        }
 
-                if (parking + armorVehicle)
+        private void ButtonAddParking_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxNewLevelName.Text))
+            {
+                MessageBox.Show("Введите название парковки", "Ошибка",
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            parkingCollection.AddParking(textBoxNewLevelName.Text);
+            ReloadLevels();
+        }
+
+        private void buttonDeleteParking_Click(object sender, EventArgs e)
+        {
+            if (listBoxParkings.SelectedIndex > -1)
+            {
+                if (MessageBox.Show($"Удалить парковку { listBoxParkings.SelectedItem.ToString()}?",
+                    "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    Draw();
-                }
-                else
-                {
-                    MessageBox.Show("Парковка переполнена");
+                    parkingCollection.DelParking(listBoxParkings.SelectedItem.ToString());
+                    ReloadLevels();
                 }
             }
-        }
-        private void buttonSetSau_Click(object sender, EventArgs e)
+        }
+
+        private void buttonSetArmorVehicle_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxParkings.SelectedIndex > -1)
             {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var sau = new Sau(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                    if (parking + sau)
+                    var vehicle = new ArmorVehicle(100, 1000, dialog.Color);
+                    if (parkingCollection[listBoxParkings.SelectedItem.ToString()] +
+                   vehicle)
                     {
                         Draw();
                     }
@@ -62,22 +93,53 @@ namespace WindowsFormsSau
                         MessageBox.Show("Парковка переполнена");
                     }
                 }
-            }
+            }
+        }
+
+        private void buttonSetSau_Click(object sender, EventArgs e)
+        {
+            if (listBoxParkings.SelectedIndex > -1)
+            {
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    ColorDialog dialogDop = new ColorDialog();
+                    if (dialogDop.ShowDialog() == DialogResult.OK)
+                    {
+                        var vehicle = new Sau(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
+                        if (parkingCollection[listBoxParkings.SelectedItem.ToString()] + vehicle)
+                        {
+                            Draw();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Парковка переполнена");
+                        }
+                    }
+                }
+            }
         }
 
         private void buttonTakeVehicle_Click(object sender, EventArgs e)
         {
-            if (maskedTextBoxPosition.Text != "")
+            if (listBoxParkings.SelectedIndex > -1 && maskedTextBoxPosition.Text != "")
             {
-                var Sau = parking - Convert.ToInt32(maskedTextBoxPosition.Text);
-                if (Sau != null)
+                var vehicle = parkingCollection[listBoxParkings.SelectedItem.ToString()] -
+               Convert.ToInt32(maskedTextBoxPosition.Text);
+                if (vehicle != null)
                 {
                     FormSau form = new FormSau();
-                    form.SetSau(Sau);
+                    form.SetSau(vehicle);
                     form.ShowDialog();
                 }
                 Draw();
             }
         }
+
+        private void listBoxParkings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Draw();
+        }
     }
 }
+

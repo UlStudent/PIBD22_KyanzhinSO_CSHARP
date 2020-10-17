@@ -35,6 +35,11 @@
             this.buttonTakeVehicle = new System.Windows.Forms.Button();
             this.labelPosition = new System.Windows.Forms.Label();
             this.maskedTextBoxPosition = new System.Windows.Forms.MaskedTextBox();
+            this.listBoxParkings = new System.Windows.Forms.ListBox();
+            this.buttonDeleteParking = new System.Windows.Forms.Button();
+            this.buttonAddParking = new System.Windows.Forms.Button();
+            this.labelParking = new System.Windows.Forms.Label();
+            this.textBoxNewLevelName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +55,7 @@
             // 
             // buttonCreateSau
             // 
-            this.buttonCreateSau.Location = new System.Drawing.Point(681, 12);
+            this.buttonCreateSau.Location = new System.Drawing.Point(681, 228);
             this.buttonCreateSau.Name = "buttonCreateSau";
             this.buttonCreateSau.Size = new System.Drawing.Size(97, 51);
             this.buttonCreateSau.TabIndex = 1;
@@ -60,7 +65,7 @@
             // 
             // buttonCreateArmorVehicle
             // 
-            this.buttonCreateArmorVehicle.Location = new System.Drawing.Point(681, 78);
+            this.buttonCreateArmorVehicle.Location = new System.Drawing.Point(681, 285);
             this.buttonCreateArmorVehicle.Name = "buttonCreateArmorVehicle";
             this.buttonCreateArmorVehicle.Size = new System.Drawing.Size(97, 49);
             this.buttonCreateArmorVehicle.TabIndex = 2;
@@ -73,7 +78,7 @@
             this.groupBox1.Controls.Add(this.buttonTakeVehicle);
             this.groupBox1.Controls.Add(this.labelPosition);
             this.groupBox1.Controls.Add(this.maskedTextBoxPosition);
-            this.groupBox1.Location = new System.Drawing.Point(665, 167);
+            this.groupBox1.Location = new System.Drawing.Point(665, 340);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(128, 98);
             this.groupBox1.TabIndex = 3;
@@ -106,11 +111,61 @@
             this.maskedTextBoxPosition.Size = new System.Drawing.Size(37, 20);
             this.maskedTextBoxPosition.TabIndex = 0;
             // 
+            // listBoxParkings
+            // 
+            this.listBoxParkings.FormattingEnabled = true;
+            this.listBoxParkings.Location = new System.Drawing.Point(668, 80);
+            this.listBoxParkings.Name = "listBoxParkings";
+            this.listBoxParkings.Size = new System.Drawing.Size(120, 95);
+            this.listBoxParkings.TabIndex = 4;
+            this.listBoxParkings.Click += new System.EventHandler(this.listBoxParkings_SelectedIndexChanged);
+            // 
+            // buttonDeleteParking
+            // 
+            this.buttonDeleteParking.Location = new System.Drawing.Point(674, 181);
+            this.buttonDeleteParking.Name = "buttonDeleteParking";
+            this.buttonDeleteParking.Size = new System.Drawing.Size(113, 23);
+            this.buttonDeleteParking.TabIndex = 5;
+            this.buttonDeleteParking.Text = "Удалить парковку";
+            this.buttonDeleteParking.UseVisualStyleBackColor = true;
+            this.buttonDeleteParking.Click += new System.EventHandler(this.buttonDeleteParking_Click);
+            // 
+            // buttonAddParking
+            // 
+            this.buttonAddParking.Location = new System.Drawing.Point(668, 51);
+            this.buttonAddParking.Name = "buttonAddParking";
+            this.buttonAddParking.Size = new System.Drawing.Size(120, 23);
+            this.buttonAddParking.TabIndex = 6;
+            this.buttonAddParking.Text = "Добавить парковку";
+            this.buttonAddParking.UseVisualStyleBackColor = true;
+            this.buttonAddParking.Click += new System.EventHandler(this.ButtonAddParking_Click);
+            // 
+            // labelParking
+            // 
+            this.labelParking.AutoSize = true;
+            this.labelParking.Location = new System.Drawing.Point(689, 9);
+            this.labelParking.Name = "labelParking";
+            this.labelParking.Size = new System.Drawing.Size(60, 13);
+            this.labelParking.TabIndex = 8;
+            this.labelParking.Text = "Парковки:";
+            // 
+            // textBoxNewLevelName
+            // 
+            this.textBoxNewLevelName.Location = new System.Drawing.Point(680, 26);
+            this.textBoxNewLevelName.Name = "textBoxNewLevelName";
+            this.textBoxNewLevelName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNewLevelName.TabIndex = 9;
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxNewLevelName);
+            this.Controls.Add(this.labelParking);
+            this.Controls.Add(this.buttonAddParking);
+            this.Controls.Add(this.buttonDeleteParking);
+            this.Controls.Add(this.listBoxParkings);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonCreateArmorVehicle);
             this.Controls.Add(this.buttonCreateSau);
@@ -121,6 +176,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -132,6 +188,11 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonTakeVehicle;
         private System.Windows.Forms.Label labelPosition;
+        private System.Windows.Forms.ListBox listBoxParkings;
+        private System.Windows.Forms.Button buttonDeleteParking;
+        private System.Windows.Forms.Button buttonAddParking;
+        private System.Windows.Forms.Label labelParking;
+        private System.Windows.Forms.TextBox textBoxNewLevelName;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxPosition;
     }
 }

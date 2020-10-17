@@ -9,7 +9,9 @@ namespace WindowsFormsSau
 {
     public class Parking<T> where T : class, ITransport
     {
-        private readonly T[] _places;
+        private readonly List<T> _places;
+
+        private readonly int _maxCount;
         private readonly int pictureWidth;
         private readonly int pictureHeight;
         private readonly int _placeSizeWidth = 210;
@@ -19,48 +21,41 @@ namespace WindowsFormsSau
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
-            _places = new T[width * height];
+            _maxCount = width * height;
             pictureWidth = picWidth;
             pictureHeight = picHeight;
+            _places = new List<T>();
         }
 
         public static bool operator +(Parking<T> p, T vehicle)
         {
-            for (int i = 0; i < p._places.Length; i++)
+            if (p._places.Count >= p._maxCount)
             {
-                if (p._places[i] == null)
-                {
-                    p._places[i] = vehicle;
-                    p._places[i].SetPosition(5 + i / 5 * p._placeSizeWidth + 5,
-                     i % 5 * p._placeSizeHeight + 15, p.pictureWidth,
-                    p.pictureHeight);
-                    return true;
-                }
+                return false;
             }
-            return false;
+            p._places.Add(vehicle);
+            return true;
         }
 
         public static T operator -(Parking<T> p, int index)
         {
-            if (index < 0 || index > p._places.Length)
+            if (index < -1 || index > p._places.Count)
             {
                 return null;
             }
-            if (p._places[index] != null)
-            {
-                T sau = p._places[index];
-                p._places[index] = null;
-                return sau;
-            }
-            return null;
+            T vehicle = p._places[index];
+            p._places.RemoveAt(index);
+            return vehicle;
         }
 
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            for (int i = 0; i < _places.Length; i++)
+            for (int i = 0; i < _places.Count; ++i)
             {
-                _places[i]?.DrawTransport(g);
+                _places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5, i % 5 *
+               _placeSizeHeight + 15, pictureWidth, pictureHeight);
+                _places[i].DrawTransport(g);
             }
         }
 
