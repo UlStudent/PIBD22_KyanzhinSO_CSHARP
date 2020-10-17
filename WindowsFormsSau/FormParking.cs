@@ -128,7 +128,7 @@ namespace WindowsFormsSau
                Convert.ToInt32(maskedTextBoxPosition.Text);
                 if (vehicle != null)
                 {
-                    FormSau form = new FormSau();
+                    FormVehicle form = new FormVehicle();
                     form.SetSau(vehicle);
                     form.ShowDialog();
                 }

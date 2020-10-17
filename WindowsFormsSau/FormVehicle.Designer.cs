@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsSau
 {
-    partial class FormSau
+    partial class FormVehicle
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSau));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVehicle));
             this.pictureBoxSau = new System.Windows.Forms.PictureBox();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
