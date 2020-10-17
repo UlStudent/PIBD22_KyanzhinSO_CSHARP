@@ -72,7 +72,7 @@ namespace WindowsFormsSau
                 var Sau = parking - Convert.ToInt32(maskedTextBoxPosition.Text);
                 if (Sau != null)
                 {
-                    FormSau form = new FormSau();
+                    FormVehicle form = new FormVehicle();
                     form.SetSau(Sau);
                     form.ShowDialog();
                 }
