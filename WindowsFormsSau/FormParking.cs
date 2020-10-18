@@ -18,7 +18,6 @@ namespace WindowsFormsSau
         {
             InitializeComponent();
             parkingCollection = new ParkingCollection(pictureBoxParking.Width, pictureBoxParking.Height);
-            Draw();
         }
 
         private void ReloadLevels()
@@ -95,7 +94,8 @@ namespace WindowsFormsSau
                     MessageBox.Show("Транспортное средство не удалось поставить");
                 }
             }
-        }
+        }
+
 
         private void buttonTakeVehicle_Click(object sender, EventArgs e)
         {
