@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
-            this.buttonCreateSau = new System.Windows.Forms.Button();
-            this.buttonCreateArmorVehicle = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonTakeVehicle = new System.Windows.Forms.Button();
             this.labelPosition = new System.Windows.Forms.Label();
@@ -40,6 +38,7 @@
             this.buttonAddParking = new System.Windows.Forms.Button();
             this.labelParking = new System.Windows.Forms.Label();
             this.textBoxNewLevelName = new System.Windows.Forms.TextBox();
+            this.buttonAddVehicle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -52,26 +51,6 @@
             this.pictureBoxParking.Size = new System.Drawing.Size(659, 450);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
-            // 
-            // buttonCreateSau
-            // 
-            this.buttonCreateSau.Location = new System.Drawing.Point(681, 228);
-            this.buttonCreateSau.Name = "buttonCreateSau";
-            this.buttonCreateSau.Size = new System.Drawing.Size(97, 51);
-            this.buttonCreateSau.TabIndex = 1;
-            this.buttonCreateSau.Text = "Припарковать Sau";
-            this.buttonCreateSau.UseVisualStyleBackColor = true;
-            this.buttonCreateSau.Click += new System.EventHandler(this.buttonSetSau_Click);
-            // 
-            // buttonCreateArmorVehicle
-            // 
-            this.buttonCreateArmorVehicle.Location = new System.Drawing.Point(681, 285);
-            this.buttonCreateArmorVehicle.Name = "buttonCreateArmorVehicle";
-            this.buttonCreateArmorVehicle.Size = new System.Drawing.Size(97, 49);
-            this.buttonCreateArmorVehicle.TabIndex = 2;
-            this.buttonCreateArmorVehicle.Text = "Припарковать бронированную машину";
-            this.buttonCreateArmorVehicle.UseVisualStyleBackColor = true;
-            this.buttonCreateArmorVehicle.Click += new System.EventHandler(this.buttonSetArmorVehicle_Click);
             // 
             // groupBox1
             // 
@@ -156,19 +135,28 @@
             this.textBoxNewLevelName.Size = new System.Drawing.Size(100, 20);
             this.textBoxNewLevelName.TabIndex = 9;
             // 
+            // buttonAddVehicle
+            // 
+            this.buttonAddVehicle.Location = new System.Drawing.Point(681, 228);
+            this.buttonAddVehicle.Name = "buttonAddVehicle";
+            this.buttonAddVehicle.Size = new System.Drawing.Size(106, 48);
+            this.buttonAddVehicle.TabIndex = 10;
+            this.buttonAddVehicle.Text = "Добавить транспортное средство";
+            this.buttonAddVehicle.UseVisualStyleBackColor = true;
+            this.buttonAddVehicle.Click += new System.EventHandler(this.buttonSetVehicle_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonAddVehicle);
             this.Controls.Add(this.textBoxNewLevelName);
             this.Controls.Add(this.labelParking);
             this.Controls.Add(this.buttonAddParking);
             this.Controls.Add(this.buttonDeleteParking);
             this.Controls.Add(this.listBoxParkings);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonCreateArmorVehicle);
-            this.Controls.Add(this.buttonCreateSau);
             this.Controls.Add(this.pictureBoxParking);
             this.Name = "FormParking";
             this.Text = "Военная база";
@@ -183,8 +171,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxParking;
-        private System.Windows.Forms.Button buttonCreateSau;
-        private System.Windows.Forms.Button buttonCreateArmorVehicle;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonTakeVehicle;
         private System.Windows.Forms.Label labelPosition;
@@ -194,5 +180,6 @@
         private System.Windows.Forms.Label labelParking;
         private System.Windows.Forms.TextBox textBoxNewLevelName;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxPosition;
+        private System.Windows.Forms.Button buttonAddVehicle;
     }
 }

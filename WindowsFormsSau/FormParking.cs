@@ -75,50 +75,27 @@ namespace WindowsFormsSau
             }
         }
 
-        private void buttonSetArmorVehicle_Click(object sender, EventArgs e)
+        private void buttonSetVehicle_Click(object sender, EventArgs e)
         {
-            if (listBoxParkings.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var vehicle = new ArmorVehicle(100, 1000, dialog.Color);
-                    if (parkingCollection[listBoxParkings.SelectedItem.ToString()] +
-                   vehicle)
-                    {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Парковка переполнена");
-                    }
-                }
-            }
+            var formVehicleConfig = new FormVehicleConfig();
+            formVehicleConfig.AddEvent(AddVehicle);
+            formVehicleConfig.Show();
         }
 
-        private void buttonSetSau_Click(object sender, EventArgs e)
+        private void AddVehicle(Vehicle vehicle)
         {
-            if (listBoxParkings.SelectedIndex > -1)
+            if (vehicle != null && listBoxParkings.SelectedIndex > -1)
             {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
+                if ((parkingCollection[listBoxParkings.SelectedItem.ToString()]) + vehicle)
                 {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var vehicle = new Sau(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                        if (parkingCollection[listBoxParkings.SelectedItem.ToString()] + vehicle)
-                        {
-                            Draw();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Парковка переполнена");
-                        }
-                    }
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Транспортное средство не удалось поставить");
                 }
             }
-        }
+        }
 
         private void buttonTakeVehicle_Click(object sender, EventArgs e)
         {

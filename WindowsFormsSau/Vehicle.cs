@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsSau
 {
-	public abstract class Vehicle : ITransport
-	{
+    public abstract class Vehicle : ITransport
+    {
         protected float _startPosX;
         protected float _startPosY;
         protected int _pictureWidth;
@@ -25,7 +25,12 @@ namespace WindowsFormsSau
             _pictureHeight = height;
         }
 
+        public void SetMainColor(Color color)
+        {
+            MainColor = color;
+        }
+
         public abstract void DrawTransport(Graphics g);
         public abstract void MoveTransport(Direction direction);
-    } 
+    }
 }

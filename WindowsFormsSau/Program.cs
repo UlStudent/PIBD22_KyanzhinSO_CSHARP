@@ -6,6 +6,8 @@ using System.Windows.Forms;
 
 namespace WindowsFormsSau
 {
+    public delegate void VehicleDelegate(Vehicle vehicle);
+
     static class Program
     {
         /// <summary>
