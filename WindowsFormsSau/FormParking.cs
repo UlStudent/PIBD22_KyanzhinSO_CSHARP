@@ -18,7 +18,6 @@ namespace WindowsFormsSau
         {
             InitializeComponent();
             parkingCollection = new ParkingCollection(pictureBoxParking.Width, pictureBoxParking.Height);
-            Draw();
         }
 
         private void ReloadLevels()
