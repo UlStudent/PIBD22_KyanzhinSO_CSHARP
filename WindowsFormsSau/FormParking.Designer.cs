@@ -118,7 +118,7 @@
             this.listBoxParkings.Name = "listBoxParkings";
             this.listBoxParkings.Size = new System.Drawing.Size(120, 95);
             this.listBoxParkings.TabIndex = 4;
-            this.listBoxParkings.Click += new System.EventHandler(this.listBoxParkings_SelectedIndexChanged);
+            this.listBoxParkings.SelectedIndexChanged += new System.EventHandler(this.listBoxParkings_SelectedIndexChanged);
             // 
             // buttonDeleteParking
             // 
