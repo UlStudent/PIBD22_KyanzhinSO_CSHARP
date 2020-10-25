@@ -81,7 +81,7 @@
             this.labelArmorVehicle.Name = "labelArmorVehicle";
             this.labelArmorVehicle.Size = new System.Drawing.Size(98, 30);
             this.labelArmorVehicle.TabIndex = 1;
-            this.labelArmorVehicle.Text = "Бронированная машина";
+            this.labelArmorVehicle.Text = "Бронированный автомобиль";
             this.labelArmorVehicle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelArmorVehicle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelArmorVehicle_MouseDown);
             // 
@@ -92,7 +92,7 @@
             this.labelSau.Name = "labelSau";
             this.labelSau.Size = new System.Drawing.Size(98, 30);
             this.labelSau.TabIndex = 0;
-            this.labelSau.Text = "САУ";
+            this.labelSau.Text = "Сау";
             this.labelSau.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelSau.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelSau_MouseDown);
             // 
@@ -356,6 +356,7 @@
             this.buttonAdd.TabIndex = 6;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // buttonCancel
             // 
