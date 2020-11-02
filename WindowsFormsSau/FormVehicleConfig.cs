@@ -14,7 +14,7 @@ namespace WindowsFormsSau
     {
         Vehicle vehicle = null;
 
-        private event VehicleDelegate eventAddVehicle;
+        private Action <Vehicle> eventAddVehicle;
 
         public FormVehicleConfig()
         {
@@ -41,11 +41,11 @@ namespace WindowsFormsSau
             }
         }
 
-        public void AddEvent(VehicleDelegate ev)
+        public void AddEvent(Action<Vehicle> ev)
         {
             if (eventAddVehicle == null)
             {
-                eventAddVehicle = new VehicleDelegate(ev);
+                eventAddVehicle = new Action<Vehicle>(ev);
             }
             else
             {
