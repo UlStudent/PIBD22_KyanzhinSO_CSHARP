@@ -11,6 +11,7 @@ namespace WindowsFormsSau
 	{
 		protected readonly int sauWidth = 70;
 		protected readonly int sauHeight = 50;
+        protected readonly char separator = ';';
 
 		public ArmorVehicle(int maxSpeed, float weight, Color mainColor)
 		{
@@ -19,7 +20,18 @@ namespace WindowsFormsSau
 			MainColor = mainColor;
 		}
 
-		protected ArmorVehicle(int maxSpeed, float weight, Color mainColor, int sauWidth, int sauHeight)
+        public ArmorVehicle(string info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }
+
+        protected ArmorVehicle(int maxSpeed, float weight, Color mainColor, int sauWidth, int sauHeight)
 		{
 			MaxSpeed = maxSpeed;
 			Weight = weight;
@@ -60,21 +72,26 @@ namespace WindowsFormsSau
 			}
 		}
 
-		public override void DrawTransport(Graphics g)
-		{
-			Pen pen = new Pen(Color.Black);
-			Brush brBlack = new SolidBrush(Color.Black);
-			//gusenica
-			g.FillEllipse(brBlack, _startPosX, _startPosY + sauHeight - 15, 20, 15);
-			g.FillEllipse(brBlack, _startPosX + 19, _startPosY + sauHeight - 15, 20, 15);
-			g.FillEllipse(brBlack, _startPosX + 38, _startPosY + sauHeight - 15, 20, 15);
-			g.DrawRectangle(pen, _startPosX + 9, _startPosY + sauHeight - 15, 40, 15);
+        public override void DrawTransport(Graphics g)
+        {
+            Pen pen = new Pen(Color.Black);
+            Brush brBlack = new SolidBrush(Color.Black);
+            //gusenica
+            g.FillEllipse(brBlack, _startPosX, _startPosY + sauHeight - 15, 20, 15);
+            g.FillEllipse(brBlack, _startPosX + 19, _startPosY + sauHeight - 15, 20, 15);
+            g.FillEllipse(brBlack, _startPosX + 38, _startPosY + sauHeight - 15, 20, 15);
+            g.DrawRectangle(pen, _startPosX + 9, _startPosY + sauHeight - 15, 40, 15);
 
-			Brush brMainColor = new SolidBrush(MainColor);
-			//bashnya
-			g.FillRectangle(brMainColor, _startPosX + 10, _startPosY + sauHeight - 30, 30, 15);
-			//dulo
-			g.FillRectangle(brBlack, _startPosX + 40, _startPosY + sauHeight - 24, 30, 2);
-		}
-	}
+            Brush brMainColor = new SolidBrush(MainColor);
+            //bashnya
+            g.FillRectangle(brMainColor, _startPosX + 10, _startPosY + sauHeight - 30, 30, 15);
+            //dulo
+            g.FillRectangle(brBlack, _startPosX + 40, _startPosY + sauHeight - 24, 30, 2);
+        }
+
+        public override string ToString()
+        {
+            return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
+        }
+    }
 }

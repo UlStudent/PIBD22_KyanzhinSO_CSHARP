@@ -73,5 +73,14 @@ namespace WindowsFormsSau
                (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
             }
         }
+
+        public T GetNext(int index)
+        {
+            if (index < 0 || index >= _places.Count)
+            {
+                return null;
+            }
+            return _places[index];
+        }
     }
 }
