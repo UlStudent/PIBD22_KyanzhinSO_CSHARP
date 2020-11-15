@@ -11,7 +11,7 @@ namespace WindowsFormsSau
 	{
 		protected readonly int sauWidth = 70;
 		protected readonly int sauHeight = 50;
-        protected readonly char separator = ';';
+        protected readonly char separator = ':';
 
 		public ArmorVehicle(int maxSpeed, float weight, Color mainColor)
 		{

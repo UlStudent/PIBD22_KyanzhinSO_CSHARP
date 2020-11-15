@@ -85,8 +85,7 @@ namespace WindowsFormsSau
         public override string ToString()
         {
             return
-           $"{base.ToString()}{separator}{DopColor.Name}{separator}{AntiRadar}" +
-           $"{separator}{DopPushka}{separator}{Man}";
+           $"{base.ToString()}{separator}{DopColor.Name}{separator}{AntiRadar}{separator}{DopPushka}{separator}{Man}";
         }
     }
 }

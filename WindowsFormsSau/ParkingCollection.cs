@@ -52,48 +52,32 @@ namespace WindowsFormsSau
             }
         }
 
-        private void WriteToFile(string text, FileStream stream)
-        {
-            byte[] info = new UTF8Encoding(true).GetBytes(text);
-            stream.Write(info, 0, info.Length);
-        }
-
         public bool SaveData(string filename)
         {
-            if (File.Exists(filename))
+            using (StreamWriter streamWriter = new StreamWriter
+            (filename, false, System.Text.Encoding.Default))
             {
-                File.Delete(filename);
-            }
-            using (FileStream fs = new FileStream(filename, FileMode.Create))
-            {
-                WriteToFile($"ParkingCollection{Environment.NewLine}", fs);
+                streamWriter.WriteLine("ParkingCollection");
                 foreach (var level in parkingStages)
                 {
-                    //Начинаем парковку
-                    WriteToFile($"Parking{separator}{level.Key}{Environment.NewLine}",
-                    fs);
-                    ITransport vehicle = null;
+                    streamWriter.WriteLine("Parking" + separator + level.Key);
+
+                    ITransport vehicle;
                     for (int i = 0; (vehicle = level.Value.GetNext(i)) != null; i++)
                     {
-                        if (vehicle != null)
+                        if (vehicle.GetType().Name == "Sau")
                         {
-                            //если место не пустое
-                            //Записываем тип машины
-                            if (vehicle.GetType().Name == "ArmorVehicle")
-                            {
-                                WriteToFile($"ArmorVehicle{separator}", fs);
-                            }
-                            if (vehicle.GetType().Name == "Sau")
-                            {
-                                WriteToFile($"Sau{separator}", fs);
-                            }
-                            //Записываемые параметры
-                            WriteToFile(vehicle + Environment.NewLine, fs);
+                            streamWriter.Write("Sau" + separator);
                         }
+                        else if (vehicle.GetType().Name == "ArmorVehicle")
+                        {
+                            streamWriter.Write("ArmorVehicle" + separator);
+                        }
+                        streamWriter.WriteLine(vehicle);
                     }
                 }
+                return true;
             }
-            return true;
         }
 
         public bool LoadData(string filename)
@@ -102,59 +86,46 @@ namespace WindowsFormsSau
             {
                 return false;
             }
-            string bufferTextFromFile = "";
-            using (StreamReader sr = new StreamReader(filename))
+
+            using (StreamReader streamReader = new StreamReader
+            (filename, System.Text.Encoding.Default))
             {
-                char[] b = new byte[sr.Length];
-                UTF8Encoding temp = new UTF8Encoding(true);
-                while (sr.Read(b, 0, b.Length) > 0)
+                if (streamReader.ReadLine().Contains("ParkingCollection"))
                 {
-                    bufferTextFromFile += temp.GetString(b);
+                    parkingStages.Clear();
                 }
-            }
-            bufferTextFromFile = bufferTextFromFile.Replace("\r", "");
-            var strs = bufferTextFromFile.Split('\n');
-            if (strs[0].Contains("ParkingCollection"))
-            {
-                //очищаем записи
-                parkingStages.Clear();
-            }
-            else
-            {
-                //если нет такой записи, то это не те данные
-                return false;
-            }
-            Vehicle vehicle = null;
-            string key = string.Empty;
-            for (int i = 1; i < strs.Length; ++i)
-            {
-                //идем по считанным записям
-                if (strs[i].Contains("Parking"))
-                {
-                    //начинаем новую парковку
-                    key = strs[i].Split(separator)[1];
-                    parkingStages.Add(key, new Parking<Vehicle>(pictureWidth, pictureHeight));
-                    continue;
-                }
-                if (string.IsNullOrEmpty(strs[i]))
-                {
-                    continue;
-                }
-                if (strs[i].Split(separator)[0] == "ArmorVehicle")
-                {
-                    vehicle = new ArmorVehicle(strs[i].Split(separator)[1]);
-                }
-                else if (strs[i].Split(separator)[0] == "Sau")
-                {
-                    vehicle = new Sau(strs[i].Split(separator)[1]);
-                }
-                var result = parkingStages[key] + vehicle;
-                if (!result)
+                else
                 {
                     return false;
                 }
+                Vehicle transport = null;
+                string key = string.Empty;
+                string line;
+                for (int i = 0; (line = streamReader.ReadLine()) != null; i++)
+                {
+                    if (line.Contains("Parking"))
+                    {
+                        key = line.Split(separator)[1];
+                        parkingStages.Add(key, new Parking<Vehicle>(pictureWidth, pictureHeight));
+                    }
+                    else if (line.Contains(separator))
+                    {
+                        if (line.Contains("Sau"))
+                        {
+                            transport = new Sau(line.Split(separator)[1]);
+                        }
+                        else if (line.Contains("ArmorVehicle"))
+                        {
+                            transport = new ArmorVehicle(line.Split(separator)[1]);
+                        }
+                        if (!(parkingStages[key] + transport))
+                        {
+                            return false;
+                        }
+                    }
+                }
+                return true;
             }
-            return true;
         }
     }
 }
