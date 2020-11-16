@@ -84,7 +84,7 @@ namespace WindowsFormsSau
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
 
             using (StreamReader streamReader = new StreamReader
@@ -96,7 +96,7 @@ namespace WindowsFormsSau
                 }
                 else
                 {
-                    return false;
+                    throw new Exception("Неверный формат файла");
                 }
                 Vehicle transport = null;
                 string key = string.Empty;
@@ -120,7 +120,7 @@ namespace WindowsFormsSau
                         }
                         if (!(parkingStages[key] + transport))
                         {
-                            return false;
+                            throw new Exception("Не удалось загрузить транспорт на парковку");
                         }
                     }
                 }

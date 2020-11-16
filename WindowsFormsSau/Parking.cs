@@ -31,7 +31,7 @@ namespace WindowsFormsSau
         {
             if (p._places.Count >= p._maxCount)
             {
-                return false;
+                throw new ParkingOverflowException();
             }
             p._places.Add(vehicle);
             return true;
@@ -41,7 +41,7 @@ namespace WindowsFormsSau
         {
             if (index < -1 || index > p._places.Count)
             {
-                return null;
+                throw new ParkingNotFoundException(index);
             }
             T vehicle = p._places[index];
             p._places.RemoveAt(index);
