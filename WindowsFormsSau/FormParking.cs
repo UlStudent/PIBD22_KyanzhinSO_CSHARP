@@ -73,7 +73,8 @@ namespace WindowsFormsSau
                 if (MessageBox.Show($"Удалить парковку { listBoxParkings.SelectedItem.ToString()}?",
                     "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    logger.Info($"Удалили парковку { listBoxParkings.SelectedItem.ToString()}");
+                    logger.Info($"Удалили парковку { listBoxParkings.SelectedItem.ToString()}");
+
                     parkingCollection.DelParking(listBoxParkings.SelectedItem.ToString());
                     ReloadLevels();
                 }
@@ -106,16 +107,17 @@ namespace WindowsFormsSau
                 }
                 catch (ParkingOverflowException ex)
                 {
-                    logger.Error(ex.Message, "Переполнение");
+                    logger.Warn(ex.Message, "Переполнение");
                     MessageBox.Show(ex.Message, "Переполнение",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
-                    logger.Error(ex.Message, "Переполнение");
+                    logger.Warn(ex.Message, "Переполнение");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                }
+
             }
         }
 
@@ -139,13 +141,13 @@ namespace WindowsFormsSau
                 }
                 catch (ParkingNotFoundException ex)
                 {
-                    logger.Error(ex.Message, "Не найдено");
+                    logger.Warn(ex.Message, "Не найдено");
                     MessageBox.Show(ex.Message, "Не найдено",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
-                    logger.Error(ex.Message, "Неизвестная ошибка");
+                    logger.Warn(ex.Message, "Неизвестная ошибка");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -175,7 +177,8 @@ namespace WindowsFormsSau
                     logger.Error(ex.Message, "Неизвестная ошибка при сохранении");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }            }
+                }
+            }
         }
 
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -193,13 +196,13 @@ namespace WindowsFormsSau
                 }
                 catch (ParkingOccupiedPlaceException ex)
                 {
-                    logger.Error(ex.Message, "Занятое место");
+                    logger.Warn(ex.Message, "Занятое место");
                     MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
-                    logger.Error(ex.Message, "Неизвестная ошибка при загрузке");
+                    logger.Warn(ex.Message, "Неизвестная ошибка при загрузке");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
