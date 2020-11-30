@@ -38,6 +38,11 @@ namespace WindowsFormsSau
         }
 
         private void buttonCreateSau_Click(object sender, EventArgs e)
+            sau.DrawTransport(gr);
+            pictureBoxSau.Image = bmp;
+        }
+
+        private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             sau = new Sau(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
@@ -70,3 +75,4 @@ namespace WindowsFormsSau
         }
     }
 }
+

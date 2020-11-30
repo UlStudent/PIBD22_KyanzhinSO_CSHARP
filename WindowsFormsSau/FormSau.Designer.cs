@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSau));
             this.pictureBoxSau = new System.Windows.Forms.PictureBox();
             this.buttonCreateBasSau = new System.Windows.Forms.Button();
+            this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
@@ -57,6 +58,15 @@
             this.buttonCreateBasSau.Text = "Create Bas Sau";
             this.buttonCreateBasSau.UseVisualStyleBackColor = true;
             this.buttonCreateBasSau.Click += new System.EventHandler(this.buttonCreateBasSau_Click);
+            // buttonCreate
+            // 
+            this.buttonCreate.Location = new System.Drawing.Point(28, 402);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreate.TabIndex = 1;
+            this.buttonCreate.Text = "Create";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonUp
             // 
@@ -123,6 +133,7 @@
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonCreateBasSau);
+            this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.pictureBoxSau);
             this.Name = "FormSau";
             this.Text = "FormSau";
@@ -135,6 +146,7 @@
 
         private System.Windows.Forms.PictureBox pictureBoxSau;
         private System.Windows.Forms.Button buttonCreateBasSau;
+        private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonDown;
