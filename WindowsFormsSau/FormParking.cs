@@ -113,7 +113,7 @@ namespace WindowsFormsSau
                 }
                 catch (Exception ex)
                 {
-                    logger.Warn(ex.Message, "Переполнение");
+                    logger.Warn(ex.Message, "Неизвестная ошибка");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -174,7 +174,7 @@ namespace WindowsFormsSau
                 }
                 catch (Exception ex)
                 {
-                    logger.Error(ex.Message, "Неизвестная ошибка при сохранении");
+                    logger.Warn(ex.Message, "Неизвестная ошибка при сохранении");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

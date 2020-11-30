@@ -52,7 +52,7 @@ namespace WindowsFormsSau
             }
         }
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             using (StreamWriter streamWriter = new StreamWriter
             (filename, false, System.Text.Encoding.Default))
@@ -76,11 +76,10 @@ namespace WindowsFormsSau
                         streamWriter.WriteLine(vehicle);
                     }
                 }
-                return true;
             }
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
@@ -96,7 +95,7 @@ namespace WindowsFormsSau
                 }
                 else
                 {
-                    throw new Exception("Неверный формат файла");
+                    throw new FormatException("Неверный формат файла");
                 }
                 Vehicle transport = null;
                 string key = string.Empty;
@@ -120,11 +119,10 @@ namespace WindowsFormsSau
                         }
                         if (!(parkingStages[key] + transport))
                         {
-                            throw new Exception("Не удалось загрузить транспорт на парковку");
+                            throw new TypeLoadException("Не удалось загрузить транспорт на парковку");
                         }
                     }
                 }
-                return true;
             }
         }
     }
