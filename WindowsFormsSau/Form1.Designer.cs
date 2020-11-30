@@ -113,7 +113,7 @@
             this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.pictureBoxSau);
             this.Name = "FormSau";
-            this.Text = "Form1";
+            this.Text = "FormSau";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSau)).EndInit();
             this.ResumeLayout(false);
 
