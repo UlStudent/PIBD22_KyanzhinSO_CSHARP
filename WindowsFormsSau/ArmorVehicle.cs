@@ -64,7 +64,7 @@ namespace WindowsFormsSau
         {
             Pen pen = new Pen(Color.Black);
             Brush brBlack = new SolidBrush(Color.Black);
-            //gusenica
+            //gusenicaa
             g.FillEllipse(brBlack, _startPosX, _startPosY + sauHeight - 15, 20, 15);
             g.FillEllipse(brBlack, _startPosX + 19, _startPosY + sauHeight - 15, 20, 15);
             g.FillEllipse(brBlack, _startPosX + 38, _startPosY + sauHeight - 15, 20, 15);
