@@ -59,6 +59,9 @@
     </Compile>
     <Compile Include="FormVehicle.Designer.cs">
       <DependentUpon>FormVehicle.cs</DependentUpon>
+    <Compile Include="FormSau.cs">
+    <Compile Include="FormVehicle.Designer.cs">
+      <DependentUpon>FormVehicle.cs</DependentUpon>
     </Compile>
     <Compile Include="ITransport.cs" />
     <Compile Include="Parking.cs" />
@@ -72,6 +75,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormVehicle.resx">
       <DependentUpon>FormVehicle.cs</DependentUpon>
+    <EmbeddedResource Include="FormSau.resx">
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
