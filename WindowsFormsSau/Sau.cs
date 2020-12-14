@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsSau
 {
-    public class Sau : ArmorVehicle
+    public class Sau : ArmorVehicle, IEquatable<Sau>
     {
         public Color DopColor { private set; get; }
 
@@ -87,5 +87,56 @@ namespace WindowsFormsSau
             return
            $"{base.ToString()}{separator}{DopColor.Name}{separator}{AntiRadar}{separator}{DopPushka}{separator}{Man}";
         }
+
+        public bool Equals(Sau other)
+        {
+            var res = (this as ArmorVehicle).Equals(other as ArmorVehicle);
+            if (!res)
+            {
+                return res;
+            }
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Man != other.Man)
+            {
+                return false;
+            }
+            if (DopPushka != other.DopPushka)
+            {
+                return false;
+            }
+            if (AntiRadar != other.AntiRadar)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Sau VehicleObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(VehicleObj);
+            }
+        }
     }
 }
+ 
