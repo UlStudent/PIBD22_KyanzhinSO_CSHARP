@@ -62,10 +62,8 @@ namespace WindowsFormsSau
                 {
                     streamWriter.WriteLine("Parking" + separator + level.Key);
 
-                    ITransport vehicle;
-                    for (int i = 0; (vehicle = level.Value.GetNext(i)) != null; i++)
-                    {
-                        if (vehicle.GetType().Name == "Sau")
+                    foreach (ITransport vehicle in level.Value)
+                    {                        if (vehicle.GetType().Name == "Sau")
                         {
                             streamWriter.Write("Sau" + separator);
                         }
