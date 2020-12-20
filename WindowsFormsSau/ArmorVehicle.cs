@@ -13,12 +13,12 @@ namespace WindowsFormsSau
 		protected readonly int sauHeight = 50;
         protected readonly char separator = ':';
 
-		public ArmorVehicle(int maxSpeed, float weight, Color mainColor)
-		{
-			MaxSpeed = maxSpeed;
-			Weight = weight;
-			MainColor = mainColor;
-		}
+        public ArmorVehicle(int maxSpeed, float weight, Color mainColor)
+        {
+            MaxSpeed = maxSpeed;
+            Weight = weight;
+            MainColor = mainColor;
+        }
 
         public ArmorVehicle(string info)
         {
@@ -40,42 +40,47 @@ namespace WindowsFormsSau
 			this.sauHeight = sauHeight;
 		}
 
-		public override void MoveTransport(Direction direction)
-		{
-			float step = MaxSpeed * 100 / Weight;
-			switch (direction)
-			{
-				case Direction.Right:
-					if (_startPosX + step < _pictureWidth - sauWidth)
-					{
-						_startPosX += step;
-					}
-					break;
-				case Direction.Left:
-					if (_startPosX - step > 0)
-					{
-						_startPosX -= step;
-					}
-					break;
-				case Direction.Up:
-					if (_startPosY - step > 0)
-					{
-						_startPosY -= step;
-					}
-					break;
-				case Direction.Down:
-					if (_startPosY + step < _pictureHeight - sauHeight)
-					{
-						_startPosY += step;
-					}
-					break;
-			}
-		}
+        public override void MoveTransport(Direction direction)
+        {
+            float step = MaxSpeed * 100 / Weight;
+            switch (direction)
+            {
+                // вправо
+                case Direction.Right:
+                    if (_startPosX + step < _pictureWidth - sauWidth)
+                    {
+                        _startPosX += step;
+                    }
+                    break;
+                //влево
+                case Direction.Left:
+                    if (_startPosX - step > 0)
+                    {
+                        _startPosX -= step;
+                    }
+                    break;
+                //вверх
+                case Direction.Up:
+                    if (_startPosY - step > 0)
+                    {
+                        _startPosY -= step;
+                    }
+                    break;
+                //вниз
+                case Direction.Down:
+                    if (_startPosY + step < _pictureHeight - sauHeight)
+                    {
+                        _startPosY += step;
+                    }
+                    break;
+            }
+        }
 
         public override void DrawTransport(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
             Brush brBlack = new SolidBrush(Color.Black);
+            
             //gusenica
             g.FillEllipse(brBlack, _startPosX, _startPosY + sauHeight - 15, 20, 15);
             g.FillEllipse(brBlack, _startPosX + 19, _startPosY + sauHeight - 15, 20, 15);
@@ -88,7 +93,7 @@ namespace WindowsFormsSau
             //dulo
             g.FillRectangle(brBlack, _startPosX + 40, _startPosY + sauHeight - 24, 30, 2);
         }
-
+        
         public override string ToString()
         {
             return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
