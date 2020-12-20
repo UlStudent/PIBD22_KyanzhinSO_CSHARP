@@ -16,7 +16,7 @@ namespace WindowsFormsSau
             }
             if (x is Sau && y is ArmorVehicle)
             {
-                return -1;
+                return 1;
             }
             if (x is ArmorVehicle && y is Sau)
             {
