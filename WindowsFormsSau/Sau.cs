@@ -44,7 +44,7 @@ namespace WindowsFormsSau
 
         public override void DrawTransport(Graphics g)
         {
-            //отрисовка основного тела
+            //отрисовка основного телa
             base.DrawTransport(g);
 
             Pen pen = new Pen(Color.Black);
