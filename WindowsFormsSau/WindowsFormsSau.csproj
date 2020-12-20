@@ -59,6 +59,9 @@
     </Compile>
     <Compile Include="FormVehicle.Designer.cs">
       <DependentUpon>FormVehicle.cs</DependentUpon>
+    <Compile Include="FormSau.cs">
+    <Compile Include="FormVehicle.Designer.cs">
+      <DependentUpon>FormVehicle.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVehicleConfig.cs">
       <SubType>Form</SubType>
@@ -78,6 +81,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormVehicle.resx">
       <DependentUpon>FormVehicle.cs</DependentUpon>
+    <EmbeddedResource Include="FormSau.resx">
     </EmbeddedResource>
     <EmbeddedResource Include="FormVehicleConfig.resx">
       <DependentUpon>FormVehicleConfig.cs</DependentUpon>

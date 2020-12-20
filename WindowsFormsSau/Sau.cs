@@ -61,7 +61,7 @@ namespace WindowsFormsSau
                 g.DrawLine(penDopColor, _startPosX + 15, _startPosY + sauHeight - 34, _startPosX + 20, _startPosY + sauHeight - 34);
             }
         }
-
+        
         public void SetDopColor(Color color)
         {
             DopColor = color;
